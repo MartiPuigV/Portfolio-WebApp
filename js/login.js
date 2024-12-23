@@ -1,4 +1,9 @@
 import { _query } from './index.js';
+import { set_cookie } from './cookies.js';
+
+function generate_sid() {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+}
 
 async function validate_login(event) {
     event.preventDefault();
@@ -19,6 +24,11 @@ async function validate_login(event) {
             return false;
         } else {
             console.log("Login successful");
+            const sid = generate_sid();
+            
+            set_cookie('sid', sid, 1);
+            await _query(`UPDATE users SET sid = '${sid}' WHERE username = '${username}'`);
+
             return true;
         }
     }
