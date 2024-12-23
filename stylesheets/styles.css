@@ -181,11 +181,6 @@ body {
     border-right: 2px solid black;
 }
 
-.main-content {
-    padding: 20px;
-    display: grid;
-}
-
 #login-form {
     height: 100%;
     margin-left: 300px;
@@ -201,4 +196,29 @@ body {
 .sidebar-logo {
     height: 55px;
     width: 55px;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+    gap: 80px;
+    padding: 20px;
+}
+
+.result-wrap {
+    background-color: rgb(254, 232, 209);
+    border-radius: 30px;
+    height: 200px;
+}
+
+.result-text {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.result-logo {
+    height: 55px;
+    width: 55px;
+    margin-left: 100px;
 }

@@ -24,5 +24,5 @@ export function get_cookie(name) {
 }
 
 export function erase_cookie(name) {
-    document.cookie = name + '=; Max-Age=-99999999;';
+    set_cookie(name, '', -1);
 }

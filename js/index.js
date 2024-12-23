@@ -36,9 +36,11 @@ async function is_alive_psql() {
     }
 }
 
-async function search() {
+export async function search() {
     const string = document.getElementById("search-bar-input").value;
+    console.log(string);
     if (string == '') {
+        load_results([]);
         return;
     }
     const queryText = `SELECT username FROM users WHERE username LIKE '%${string}%'`;
@@ -47,7 +49,34 @@ async function search() {
     if (result === null) {
         return false;
     } else {
-        console.log(result);
+        load_results(result);
         return true;
     }
 }
+
+function load_results(results) {
+    const searchResults = document.getElementById("search-results");
+    searchResults.innerHTML = "";
+    results.forEach(result => {
+        const resultDiv = document.createElement("div");
+        resultDiv.classList.add("result-wrap");
+
+        const resultText = document.createElement("p");
+        resultText.classList.add("result-text");
+        resultText.innerText = result.username;
+
+        const img = document.createElement('img');
+        img.src = '/resources/user.png';
+        img.classList.add('result-logo');
+        img.style.userSelect = 'none';
+        img.style.position = 'absolute';
+
+        resultDiv.appendChild(resultText);
+        resultDiv.appendChild(img);
+        searchResults.appendChild(resultDiv);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById("search-bar-input").addEventListener("input", search);
+});

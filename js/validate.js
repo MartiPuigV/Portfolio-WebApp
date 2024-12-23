@@ -24,8 +24,8 @@ async function validate_user() {
                 document.getElementById("username-display").innerText = username.username;
             }
             document.getElementById("login-button").innerText = "Logout";
-            document.getElementById("login-button").parentElement.addEventListener("click", async () => {
-                erase_cookie("sid"); // We are logged in and click the log out button
+            document.getElementById("login-button").parentElement.addEventListener("click", function () {
+                erase_cookie("sid");
             });
             document.getElementById("signup-button").parentElement.parentElement.style.visibility = "hidden";
         }
