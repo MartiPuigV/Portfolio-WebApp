@@ -1,12 +1,12 @@
 import { _query } from './index.js';
 import { set_cookie } from './cookies.js';
 
-function generate_sid() {
+function generate_sid() { // @fixme Consider obfuscating this
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 }
 
 async function validate_login(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent page from reloading
     const username = document.getElementById('form-username').value;
     const password = document.getElementById('form-password').value;
 
@@ -28,6 +28,8 @@ async function validate_login(event) {
             
             set_cookie('sid', sid, 1);
             await _query(`UPDATE users SET sid = '${sid}' WHERE username = '${username}'`);
+
+            window.location.href = '/pages/index.html'; // Send the user back to the main menu page
 
             return true;
         }

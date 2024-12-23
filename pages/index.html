@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="/stylesheets/styles.css">
     </head>
     <body>
-        <script src="" async defer></script>
         <div class="toolbar">
             <div class="header">
                 <a href="/">
@@ -16,26 +15,27 @@
             </div>
             <br><p></p><br><p></p><br><p></p><br><p></p><br><p></p>
             <div class="search-bar">
-                <input type="text" class="search-box" placeholder="Discover">
+                <input type="text" class="search-box" id="search-bar-input" placeholder="Discover">
                 <img srcset="https://img.icons8.com/?size=256&id=XU3XKgdpT0qG&format=png" id="search-icon">
             </div>
             <br><p></p>
             <div class="outline-box">
                 <a href="/pages/login.html" class="toolbar-item">
-                    <p class="link-text">Log in</p>
+                    <p class="link-text" id="login-button">Log in</p>
                 </a>
             </div>
             <br>
             <div class="outline-box">
                 <a href="/pages/signup.html" class="toolbar-item">
-                    <p class="link-text">Sign up</p>
+                    <p class="link-text" id="signup-button">Sign up</p>
                 </a>
             </div>
         </div>
         <br><br>
         <div class="content">
             <div class="sidebar">
-                <p>Sidebar</p>
+                <img src="/resources/incognito.png" class="sidebar-logo" id="sidebar-logo" style="user-select: none; position: absolute;">
+                <p id="username-display" style="position: absolute; padding-left: 65px;"></p>
             </div>
             <div class="main-content">
                 <div class="catchphrase">
@@ -46,5 +46,8 @@
         </div>
         <script type="module" src="/js/index.js"></script>
         <script type="module" src="/js/validate.js"></script>
+        <script>
+            document.getElementById("search-bar-input").addEventListener("input", search);
+        </script>
     </body>
 </html>

@@ -8,7 +8,7 @@ async function exists_username(username) {
 }
 
 async function signup(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent page from reloading
     const username = document.getElementById('form-username').value;
     const password = document.getElementById('form-password').value;
 
@@ -27,6 +27,9 @@ async function signup(event) {
         return false;
     } else {
         console.log("Signup successful");
+
+        window.location.href = '/pages/login.html'; // Send the user back to the login page
+
         return true;
     }
 }

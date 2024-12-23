@@ -35,3 +35,19 @@ async function is_alive_psql() {
         return true;
     }
 }
+
+async function search() {
+    const string = document.getElementById("search-bar-input").value;
+    if (string == '') {
+        return;
+    }
+    const queryText = `SELECT username FROM users WHERE username LIKE '%${string}%'`;
+    const result = await _query(queryText);
+
+    if (result === null) {
+        return false;
+    } else {
+        console.log(result);
+        return true;
+    }
+}

@@ -24,8 +24,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/api/v1/query', async (req, res) => {
-    const { query, API_key } = req.body;
+app.post('/api/v1/query', async (req, res) => { // @fixme Consider refactoring this to use
+    const { query, API_key } = req.body;        // a middleware for API key validation
     if (API_key !== process.env.API_KEY) {
         res.status(401).json({error: 'Unauthorized'});
         return;
