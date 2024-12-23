@@ -38,6 +38,10 @@ app.post('/api/v1/query', async (req, res) => {
     }
 });
 
+app.get('/', async (req, res) => {
+    res.send('Alive!');
+});
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });

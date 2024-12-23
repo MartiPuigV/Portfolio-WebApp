@@ -27,11 +27,11 @@ body {
     width: 48px;
     height: 48px;
     margin-right: 20px;
-    transition: transform 0.1s ease-in;
+    transition: transform 0.3s ease-in, rotateY 1s ease;
 }
 
 .logo:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) rotateY(180deg);
 }
 
 #logo {
