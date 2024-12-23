@@ -1,4 +1,4 @@
-async function _query(query) {
+export async function _query(query) {
     try {
         const response = await fetch('http://localhost:3000/api/v1/query', {
             method: 'POST',
@@ -35,4 +35,3 @@ async function is_alive_psql() {
         return true;
     }
 }
-

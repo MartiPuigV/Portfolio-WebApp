@@ -45,7 +45,7 @@ body {
     max-width: 50px;
 }
 
-.button-box {
+.outline-box {
     border-style: solid;
     border-color: black;
     border-width: 2px;
@@ -58,11 +58,11 @@ body {
     transition: background-color 0.5s ease;
 }
 
-.button-box:hover .link-text{
+.outline-box:hover .link-text{
     color: orange;
 }
 
-.button-box:hover {
+.outline-box:hover {
     background-color: bisque;
     box-shadow: -4px -4px 2px 2px rgba(0, 0, 0, 0.2);
 }
@@ -108,7 +108,7 @@ body {
 
 .search-box:hover + #search-icon,
 .search-box:focus + #search-icon {
-    animation: stretch 1s forwards;
+    animation: stretch 0.7s forwards;
 }
 
 .search-bar {
@@ -125,7 +125,7 @@ body {
 }
 
 .search-box:not(:hover) + #search-icon {
-    animation: stretch-reverse 1s forwards;
+    animation: stretch-reverse 0.7s forwards;
 }
 
 @keyframes stretch {
@@ -169,20 +169,10 @@ body {
     align-items: center;
 }
 
-.content-box {
-    border-radius: 30px;
-    border: none;
-    background: linear-gradient(to right, #F9C823, #FC506E);
-    width: 500px;
-    height: 300px;
-    padding: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
 .content {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    height: calc(100vh - 50px);
+    grid-template-columns: 1fr 7fr;
+    height: calc(100vh - 200px);
 }
 
 .sidebar {
@@ -194,14 +184,10 @@ body {
 .main-content {
     padding: 20px;
     display: grid;
-    row-gap: 60px;
 }
 
-.wrapper {
-    display: flex;
-    align-items: left;
-    padding: 20px;
-    margin-left: 400px;
-    margin-right: 450px;
-    gap: 300px;
+#login-form {
+    height: 100%;
+    margin-left: 300px;
+    margin-right: 400px;
 }
