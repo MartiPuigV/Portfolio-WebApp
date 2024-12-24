@@ -1,4 +1,5 @@
 import { _query } from "./index.js";
+import { filter_input } from "./sql_shield.js";
 
 function get_username_from_url() {
     const queryString = window.location.search;
@@ -9,6 +10,7 @@ function get_username_from_url() {
 }
 
 export async function get_id_from_username(username) {
+    username = filter_input(username);
     const queryText = `SELECT id FROM users WHERE username = '${username}'`; // @fixme This is vulnerable to SQL injection
     const result = await _query(queryText);
     return result.length == 1 ? result[0].id : undefined
@@ -17,6 +19,7 @@ export async function get_id_from_username(username) {
 async function get_user_info() {
     const username = get_username_from_url();
     if (username) {
+        username = filter_input(username);
         const queryText = `SELECT description, image FROM users WHERE username = '${username}'`; // @fixme This is vulnerable to SQL injection
         const result = await _query(queryText);
         return result.length == 1 ? { ...result[0], ...{'username': username}} : undefined

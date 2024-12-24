@@ -1,5 +1,7 @@
-export async function _query(query) {
-    try {
+import { filter_input } from "./sql_shield.js";
+
+export async function _query(query) { // Consider moving this to server.js, so we
+    try {                             //  can use .env for api key and endpoint
         const response = await fetch('http://localhost:3000/api/v1/query', {
             method: 'POST',
             headers: {
@@ -37,14 +39,16 @@ async function is_alive_psql() {
 }
 
 export async function search() {
-    const string = document.getElementById("search-bar-input").value;
+    let string = document.getElementById("search-bar-input").value;
     console.log(string);
     if (string == '') {
         load_results([]);
         return;
     }
-    const queryText = `SELECT username FROM users WHERE username LIKE '%${string}%'`;
-    const result = await _query(queryText);
+    string = filter_input(string);
+    // const queryText = `SELECT username FROM users WHERE username LIKE '%${string}%'`;
+    const queryText = 'PREPARE query (text) AS SELECT username FROM users WHERE username LIKE $1;';
+    const result = await _prepared_query(queryText, [`'%${string}%'`]);
 
     if (result === null) {
         return false;
@@ -52,6 +56,14 @@ export async function search() {
         load_results(result);
         return true;
     }
+}
+
+export async function _prepared_query(prepared_query, parameters) { // Demo of prepared queries
+    const trash = await _query(prepared_query);
+    const query = `EXECUTE query (${parameters.join(', ')});`;
+    console.log(query);
+    const _trash = await _query('DEALLOCATE query;');
+    return await _query(query);
 }
 
 function load_results(results) {

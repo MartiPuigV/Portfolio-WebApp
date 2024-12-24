@@ -1,10 +1,11 @@
 import { _query } from './index.js';
+import { filter_input } from './sql_shield.js';
 
 async function exists_username(username) {
-  const query = `SELECT * FROM users WHERE username = '${username}'`;
-  const result = await _query(query);
-  console.log(result);
-  return result.length > 0;
+    const query = `SELECT * FROM users WHERE username = '${username}'`;
+    const result = await _query(query);
+    console.log(result);
+    return result.length > 0;
 }
 
 async function signup(event) {
@@ -16,6 +17,9 @@ async function signup(event) {
         console.error("Username already exists");
         return false;
     }
+
+    username = filter_input(username);
+    password = filter_input(password);
 
     const queryText = `INSERT INTO users (username, password) VALUES ('${username}', '${password}')`;
     const result = await _query(queryText);
