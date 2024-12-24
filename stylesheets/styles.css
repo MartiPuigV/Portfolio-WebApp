@@ -121,7 +121,6 @@ body {
     height: 30px;
     margin-top: -8px;
     margin-left: -40px;
-    transition: transform 0.2s ease;
 }
 
 .search-box:not(:hover) + #search-icon {
@@ -209,6 +208,24 @@ body {
     background-color: rgb(254, 232, 209);
     border-radius: 30px;
     height: 200px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.big-wrap:hover .result-wrap {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    background-color: antiquewhite;
+    animation: card-flip 0.8s ease forwards;
+    transform: translateY(-15px);
+}
+
+@keyframes card-flip {
+    0% {
+        transform: none;
+    }
+    100% {
+        transform: rotateY(360deg) translateY(-15px);
+    }
 }
 
 .result-text {
@@ -221,4 +238,14 @@ body {
     height: 55px;
     width: 55px;
     margin-left: 100px;
+}
+
+#description-wrap {
+    font-size: 15px;
+    text-align: center;
+    border: 2px solid black;
+    padding: 140px;
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 250px;
 }

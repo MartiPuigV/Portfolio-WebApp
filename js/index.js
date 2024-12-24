@@ -5,7 +5,7 @@ export async function _query(query) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ "query": query, "API_key": "devtools" })
+            body: JSON.stringify({ "query": query, "API_key": 'devtools' })
         });
 
         if (!response.ok) {
@@ -58,6 +58,8 @@ function load_results(results) {
     const searchResults = document.getElementById("search-results");
     searchResults.innerHTML = "";
     results.forEach(result => {
+        const bigDiv = document.createElement("div");
+        bigDiv.classList.add("big-wrap");
         const resultDiv = document.createElement("div");
         resultDiv.classList.add("result-wrap");
 
@@ -73,10 +75,17 @@ function load_results(results) {
 
         resultDiv.appendChild(resultText);
         resultDiv.appendChild(img);
-        searchResults.appendChild(resultDiv);
+        bigDiv.appendChild(resultDiv);
+        searchResults.appendChild(bigDiv);
+
+        bigDiv.addEventListener('click', function () {
+            window.location.href = '/pages/profile.html?username=' + result.username;
+        });
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById("search-bar-input").addEventListener("input", search);
-});
+if (document.location.pathname == '/pages/index.html') {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById("search-bar-input").addEventListener("input", search);
+    });
+}

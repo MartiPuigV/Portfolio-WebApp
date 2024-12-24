@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Portpholio</title>
+        <link rel="icon" href="/resources/logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+    </head>
+    <body>
+        <div class="toolbar">
+            <div class="header">
+                <a href="/">
+                    <img src="/resources/logo.png" class="logo" id="logo">
+                </a>
+                <p class="title-text">Portpholio</p>
+            </div>
+            <br><p></p><br><p></p><br><p></p><br><p></p><br><p></p>
+            <br><p></p>
+            <div class="outline-box">
+                <a href="/pages/login.html" class="toolbar-item">
+                    <p class="link-text" id="login-button">Log in</p>
+                </a>
+            </div>
+            <br>
+            <div class="outline-box">
+                <a href="/pages/signup.html" class="toolbar-item">
+                    <p class="link-text" id="signup-button">Sign up</p>
+                </a>
+            </div>
+        </div>
+        <br><br>
+        <div class="content">
+            <div class="sidebar">
+                <img src="/resources/incognito.png" class="sidebar-logo" id="sidebar-logo" style="user-select: none; position: absolute;">
+                <p id="username-display" style="position: absolute; padding-left: 65px;"></p>
+            </div>
+            <div class="main-content">
+                <div class="catchphrase">
+                    <img src="/resources/user.png" id="profile-image" class="sidebar-logo" style="padding: 5px; user-select: none; border-radius: 2px; border: 1px solid black;">
+                    <h1 id="profile-display"></h1>
+                </div>
+                <div class="user-wrap">
+                    <div id="description-wrap">
+                        <p id="description-display" style="font-size: large;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="/js/validate.js"></script>
+        <script type="module" src="/js/profile.js"></script>
+    </body>
+</html>
